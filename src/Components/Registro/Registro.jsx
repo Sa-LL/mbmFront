@@ -80,6 +80,8 @@ export default function SignUp() {
             .post("https://mbmcolombia.herokuapp.com/register", objeto)
             .then((res) => {
                 sessionStorage.setItem("token", res.data.token);
+                console.log(res)
+                sessionStorage.setItem("data", JSON.stringify(res.data));
                 history.push("/marca");
             })
             .catch((err) => {

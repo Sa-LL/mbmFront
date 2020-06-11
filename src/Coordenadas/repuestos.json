@@ -1,0 +1,162 @@
+{
+	"list": {
+		"Llanta": [
+			{
+				"nombre": "Angel City",
+				"marca": "Pirrelli",
+				"cilindraje": "125",
+				"pos": "del",
+				"tipo": "calle",
+				"precio": 113000,
+				"medidas": "100/80/14",
+				"id": "pirelli-angel-city-100-80-14"
+			},
+			{
+				"id": "pirelli-angel-city-140-70-17",
+				"nombre": "Angel City",
+				"marca": "Pirrelli",
+				"cilindraje": "150-200",
+				"pos": "del",
+				"tipo": "calle",
+				"precio": 217000,
+				"medidas": "140/70/17"
+			},
+			{
+				"id": "llanta-michelin-bopper_120-50-2",
+				"nombre": "Bopper",
+				"marca": "Michelin",
+				"cilindraje": "125",
+				"pos": "del",
+				"tipo": "scooter auto",
+				"precio": 147000,
+				"medidas": "120/70/12"
+			},
+			{
+				"id": "llanta-michelin-Bopper 130-70-12",
+				"nombre": "Bopper",
+				"marca": "Michelin",
+				"cilindraje": "125",
+				"pos": "tra",
+				"tipo": "scooter auto",
+				"precio": 147000,
+				"medidas": "130/70/12"
+			},
+			{
+				"id": "metzeler-sahara 80-90-21",
+				"nombre": "Sahara",
+				"marca": "Metzeler",
+				"cilindraje": "200",
+				"pos": "del",
+				"tipo": "enduro",
+				"precio": 140000,
+				"medidas": "80/90/21"
+			},
+			{
+				"id": "llanta-pirelli-13070-12-sl26",
+				"nombre": "061b",
+				"marca": "Magik",
+				"cilindraje": "125",
+				"pos": "tra",
+				"tipo": "scooter auto",
+				"precio": 93000,
+				"medidas": "130/70/12"
+			},
+			{
+				"id": "metzeler-enduro-3-sahara-130-80-17",
+				"nombre": "Sahara",
+				"marca": "Metzeler",
+				"cilindraje": "600",
+				"pos": "tra",
+				"tipo": "enduro",
+				"precio": 335000,
+				"medidas": "130/80/17"
+			},
+			{
+				"id": "llanta-michelin-sirac-130-80-17",
+				"nombre": "Sirac",
+				"marca": "Michelin",
+				"cilindraje": "600",
+				"pos": "tra",
+				"tipo": "enduro",
+				"precio": 290000,
+				"medidas": "130/80/17"
+			}
+		],
+		"Aceite": [
+			{
+				"id": "mobil-20w-50",
+				"nombre": "Mobil 4T Mineral",
+				"marca": "Mobil",
+				"tipo": "20w-50",
+				"precio": 18000
+			},
+			{
+				"id": "motul-5100-15w50-4t",
+				"nombre": "Motul 5100 Sint",
+				"marca": "Motul",
+				"tipo": "15w-50",
+				"precio": 27000
+			},
+			{
+				"id": "Motul7100-20W50",
+				"nombre": "Motul 7100 Sint",
+				"marca": "Motul",
+				"tipo": "20w-50",
+				"precio": 41000
+			},
+			{
+				"id": "motorex 15w-50",
+				"nombre": "Motorex",
+				"marca": "Motorex",
+				"tipo": "15w-50",
+				"precio": 41000
+			},
+			{
+				"id": "repsol10w-40",
+				"nombre": "Repsol 4T",
+				"marca": "Repsol",
+				"tipo": "10w-40",
+				"precio": 35000
+			},
+			{
+				"id": "Motul-scooter10w40",
+				"nombre": "Motul Scooter",
+				"marca": "Motul",
+				"tipo": "10w-40",
+				"precio": 30000
+			}
+		],
+		"Frenos": [
+			{
+				"id": "sinterscooterbrakepads",
+				"nombre": "SCOOTER BRAKE PADS",
+				"precio": 50000
+			},
+			{
+				"id": "semimetalbrakepads",
+				"nombre": "SEMI METAL BRAKE PADS",
+				"precio": 58000
+			},
+			{
+				"id": "trialtopbrakepads",
+				"nombre": "TRIAL TOP BRAKE PADS",
+				"precio": 59000
+			},
+			{
+				"id": "sinterstreetbrakpads",
+				"nombre": "SINTER STREET BRAKE PADS",
+				"precio": 71000
+			},
+			{
+				"id": "sinterquadsbrakepads",
+				"nombre": "SINTER QUADS BRAKE PADS",
+				"precio": 63000
+			},
+			{
+				"id": "premium-brake-pads",
+				"nombre": "PREMIUM BRAKE PADS",
+				"precio": 61000
+			}
+		]
+	}
+}

@@ -36,7 +36,7 @@ import Paper from "@material-ui/core/Paper";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import * as tallerData from "../../Coordenadas/talleres.json";
 import RoomIcon from '@material-ui/icons/Room';
-import Avatar from "@material-ui/core/Avatar";
+import * as repuestosData from "../../Coordenadas/repuestos.json";
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -567,7 +567,80 @@ export default function InicioS() {
                                                     </ListItem>
                                                 </List>
                                             </Paper>
-                                            : null
+                                            :
+                                            menuItems.miRepuesto ?
+                                                <div>
+                                                    {motoActual && repuestosData.default.list.Llanta.map((repuesto, index) => {
+                                                        if (motoActual.cil == repuesto.cilindraje) {
+                                                            return (<Paper className={classes.paperCard} key={index}>
+                                                                <Card className={classes.bikeCard}>
+                                                                    <CardActionArea>
+                                                                        <CardMedia
+                                                                            component="img"
+                                                                            alt={repuesto.nombre}
+                                                                            height="186px"
+                                                                            image={require(`../../Imagenes/Repuestos/${repuesto.id}.png`)}
+                                                                            title={repuesto.nombre}
+                                                                        />
+                                                                        <CardContent>
+                                                                            <Typography gutterBottom variant="h5" component="h2">
+                                                                                {`${repuesto.nombre} ${repuesto.marca}`}
+                                                                            </Typography>
+
+                                                                        </CardContent>
+                                                                    </CardActionArea>
+                                                                </Card>
+                                                            </Paper>)
+                                                        }
+                                                    }
+                                                    )}
+                                                    {repuestosData.default.list.Aceite.map((repuesto, index) => {
+                                                        return (<Paper className={classes.paperCard} key={index}>
+                                                            <Card className={classes.bikeCard}>
+                                                                <CardActionArea>
+                                                                    <CardMedia
+                                                                        component="img"
+                                                                        alt={repuesto.nombre}
+                                                                        height="300px"
+                                                                        image={require(`../../Imagenes/Repuestos/${repuesto.id}.png`)}
+                                                                        title={repuesto.nombre}
+                                                                    />
+                                                                    <CardContent>
+                                                                        <Typography gutterBottom variant="h5" component="h2">
+                                                                            {`${repuesto.nombre} ${repuesto.marca}`}
+                                                                        </Typography>
+
+                                                                    </CardContent>
+                                                                </CardActionArea>
+                                                            </Card>
+                                                        </Paper>)
+                                                    }
+                                                    )}
+                                                    {repuestosData.default.list.Frenos.map((repuesto, index) => {
+                                                        return (<Paper className={classes.paperCard} key={index}>
+                                                            <Card className={classes.bikeCard}>
+                                                                <CardActionArea>
+                                                                    <CardMedia
+                                                                        component="img"
+                                                                        alt={repuesto.nombre}
+                                                                        height="300px"
+                                                                        image={require(`../../Imagenes/Repuestos/${repuesto.id}.png`)}
+                                                                        title={repuesto.nombre}
+                                                                    />
+                                                                    <CardContent>
+                                                                        <Typography gutterBottom variant="h5" component="h2">
+                                                                            {`${repuesto.nombre} ${repuesto.marca}`}
+                                                                        </Typography>
+
+                                                                    </CardContent>
+                                                                </CardActionArea>
+                                                            </Card>
+                                                        </Paper>)
+                                                    }
+                                                    )}
+                                                </div>
+
+                                                : null
                         }
                     </Grid>
                 </Container>
