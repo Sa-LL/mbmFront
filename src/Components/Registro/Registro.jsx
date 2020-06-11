@@ -207,7 +207,7 @@ export default function SignUp() {
           </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="/" variant="body2">
+                            <Link onClick={() => history.push("/")} variant="body2">
                                 ¿Ya tienes una cuenta? Ingresa
               </Link>
                         </Grid>
