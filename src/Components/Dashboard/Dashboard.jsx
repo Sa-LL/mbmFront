@@ -156,7 +156,7 @@ function datediff(first, second) {
     // Take the difference between the dates and divide by milliseconds per day.
     // Round to nearest whole number to deal with DST.
     return Math.round((second - first) / (1000 * 60 * 60 * 24));
-}
+};
 
 function CircularProgressWithLabel(props) {
     return (
@@ -201,15 +201,21 @@ export default function InicioS() {
     const history = useHistory();
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-
-    const [motoActual, setMotoActual] = useState({});
-
     let data = JSON.parse(sessionStorage.getItem("data"));
+
+    const [motoActual, setMotoActual] = useState(data.bikes[0]);
+
     const [menuItems, setMenuItems] = useState({
         misMotos: true,
-    })
+    });
 
-    let dataPorcentaje = {};
+    let dataPorcentaje = {
+        frenos: 100 / 5000,
+        aceite: 100 / 2000,
+        llantas: 100 / 7000,
+        filtroAire: 100 / 5000,
+        filtroAceite: 100 / 4000
+    };
     //Barra lateral izquierda
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -382,36 +388,37 @@ export default function InicioS() {
                                 menuItems.misEstadisticas ?
                                     (
                                         <Grid item xs={8}>
+                                            {console.log(motoActual)}
                                             <List>
                                                 <Divider component="li" />
                                                 <ListItem>
                                                     <ListItemText primary="Freno trasero" />
-                                                    <CircularProgressWithLabel value={30} />
+                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.bbreak.$date), new Date()) * 10 * dataPorcentaje.frenos} />
                                                 </ListItem>
                                                 <Divider component="li" />
                                                 <ListItem>
                                                     <ListItemText primary="Freno delantero" />
-                                                    <CircularProgressWithLabel value={30} />
+                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.fbreak.$date), new Date()) * 10 * dataPorcentaje.frenos} />
                                                 </ListItem>
                                                 <Divider component="li" />
                                                 <ListItem>
                                                     <ListItemText primary="Filtro de aceite" />
-                                                    <CircularProgressWithLabel value={30} />
+                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.buji.$date), new Date()) * 10 * dataPorcentaje.filtroAceite} />
                                                 </ListItem>
                                                 <Divider component="li" />
                                                 <ListItem>
                                                     <ListItemText primary="Filtro de aire" />
-                                                    <CircularProgressWithLabel value={30} />
+                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.filt.$date), new Date()) * 10 * dataPorcentaje.filtroAire} />
                                                 </ListItem>
                                                 <Divider component="li" />
                                                 <ListItem>
                                                     <ListItemText primary="Llanta trasera" />
-                                                    <CircularProgressWithLabel value={30} />
+                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.btire.$date), new Date()) * 10 * dataPorcentaje.llantas} />
                                                 </ListItem>
                                                 <Divider component="li" />
                                                 <ListItem>
                                                     <ListItemText primary="Llanta delantera" />
-                                                    <CircularProgressWithLabel value={30} />
+                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.ftire.$date), new Date()) * 10 * dataPorcentaje.llantas} />
                                                 </ListItem>
                                             </List>
 

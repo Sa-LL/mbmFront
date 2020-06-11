@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -51,6 +51,18 @@ export default function SignIn() {
     const classes = useStyles();
     const history = useHistory();
 
+    useEffect(() => {
+        axios
+            .get("https://motos-json.herokuapp.com/list", {})
+            .then((res) => {
+                //props.handleLista(res.data);
+                sessionStorage.setItem("list", JSON.stringify(res.data))
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -70,7 +82,7 @@ export default function SignIn() {
                             key={key}
                             onClick={() => {
                                 sessionStorage.setItem("marca", key);
-                                history.push("/motoregistro")
+                                history.push("/motos")
                             }}
                             style={{ margin: "5%" }}
                             src={require(`../../Imagenes/${key}.png`)}

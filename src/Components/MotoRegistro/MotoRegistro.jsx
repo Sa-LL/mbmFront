@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+    const moto = JSON.parse(sessionStorage.getItem("moto"));
     const history = useHistory();
     const [datos, setDatos] = useState({
         color: "",
@@ -80,13 +81,29 @@ export default function SignUp() {
     });
 
     const handleClick = () => {
+        console.log(moto)
+        let objeto = {
+            cil: moto.cilindraje,
+            ref: moto.id,
+            mod: datos.modelo,
+            color: datos.color,
+            kilom: datos.kilometraje,
+            oil: datos.aceite,
+            bbreak: datos.frenoTrasero,
+            fbreak: datos.frenoDelantero,
+            filt: datos.filtroAire,
+            buji: datos.filtroAceite,
+            btire: datos.llantaTrasera,
+            ftire: datos.llantaDelantera
+        }
         axios
-            .post("https://mbmcolombia.herokuapp.com/add", datos)
+            .post("https://mbmcolombia.herokuapp.com/add", objeto)
             .then((res) => {
                 history.push("/dashboard");
             })
             .catch((err) => {
-                history.push("/dashboard");
+                history.push("/motoregistro");
+                console.log(err)
             });
     };
 
@@ -97,10 +114,10 @@ export default function SignUp() {
             <CssBaseline />
             <div className={classes.paper}>
                 <img
-                    src={require("../../Imagenes/logo.png")}
+                    src={require(`../../Imagenes/Motos/${moto.id}.png`)}
                     alt="mbmlogo"
-                    height="40%"
-                    width="40%"
+                    height="60%"
+                    width="60%"
                 />
                 <Typography style={{ marginTop: "10%", marginBottom: "5%" }} component="h1" variant="h5">
                     Información de la motocicleta
@@ -239,7 +256,7 @@ export default function SignUp() {
                         className={classes.submit}
                         onClick={handleClick}
                     >
-                        Registrarse
+                        Registrar motocicleta
           </Button>
 
                 </form>
