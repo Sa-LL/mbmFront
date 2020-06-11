@@ -36,7 +36,7 @@ import Paper from "@material-ui/core/Paper";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import * as tallerData from "../../Coordenadas/talleres.json";
 import RoomIcon from '@material-ui/icons/Room';
-
+import Avatar from "@material-ui/core/Avatar";
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -514,7 +514,7 @@ export default function InicioS() {
                                                 }}
                                                 mapStyle="mapbox://styles/mapbox/streets-v11"
                                             >
-                                                {tallerData.default[motoActual.brand].map((taller, index) => (
+                                                {motoActual && tallerData.default[motoActual.brand].map((taller, index) => (
                                                     <Marker key={index}
                                                         longitude={taller[0]}
                                                         latitude={taller[1]}
@@ -544,7 +544,30 @@ export default function InicioS() {
                                         </Paper>
 
 
-                                        : null
+                                        :
+
+                                        menuItems.miPerfil ?
+                                            <Paper className={classes.paperCard}>
+                                                <List className={classes.paperList}>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Nombre" secondary={data.name} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Correo electrónico" secondary={data.email} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="País" secondary={data.country} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Género" secondary={data.gender} />
+                                                    </ListItem>
+                                                </List>
+                                            </Paper>
+                                            : null
                         }
                     </Grid>
                 </Container>
