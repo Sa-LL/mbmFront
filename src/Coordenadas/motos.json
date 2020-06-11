@@ -1,0 +1,168 @@
+{
+    "list": {
+        "honda": [
+            {
+                "id": "CB110",
+                "nombre": "Honda CB-110",
+                "marca": "Honda",
+                "cilindraje": "110",
+                "tipo": "calle"
+            },
+            {
+                "id": "CB125",
+                "nombre": "Honda CB-125F",
+                "marca": "honda",
+                "cilindraje": "125",
+                "tipo": "calle"
+            },
+            {
+                "id": "CB160F",
+                "nombre": "Honda CB-160F",
+                "marca": "Honda",
+                "cilindraje": "160",
+                "tipo": "calle"
+            },
+            {
+                "id": "CB190R",
+                "nombre": "Honda CB-190R",
+                "marca": "Honda",
+                "cilindraje": "185",
+                "tipo": "calle"
+            },
+            {
+                "id": "XR150",
+                "nombre": "Honda XR-150l",
+                "marca": "Honda",
+                "cilindraje": "150",
+                "tipo": "enduro"
+            }
+        ],
+        "auteco": [
+            {
+                "id": "D125",
+                "nombre": "Auteco Discovery 125",
+                "marca": "Auteco",
+                "cilindraje": "125",
+                "tipo": "calle"
+            },
+            {
+                "id": "PULSAR200",
+                "nombre": "Pulsar 200NS",
+                "marca": "Auteco",
+                "cilindraje": "200",
+                "tipo": "calle"
+            },
+            {
+                "id": "DOMINAR",
+                "nombre": "Dominar 400",
+                "marca": "Auteco",
+                "cilindraje": "400",
+                "tipo": "calle"
+            },
+            {
+                "id": "BOXER100",
+                "nombre": "Boxer 125",
+                "marca": "Auteco",
+                "cilindraje": "100",
+                "tipo": "calle"
+            }
+        ],
+        "yamaha": [
+            {
+                "id": "FZ2",
+                "nombre": "Yamaha FZ 2.0",
+                "marca": "Yamaha",
+                "cilindraje": "150",
+                "tipo": "calle"
+            },
+            {
+                "id": "BWSX",
+                "nombre": "BWS X 125",
+                "marca": "Yamaha",
+                "cilindraje": "125",
+                "tipo": "Scooter Automatica"
+            },
+            {
+                "id": "XTZ125",
+                "nombre": "Yamaha XTZ-125",
+                "marca": "Yamaha",
+                "cilindraje": "125",
+                "tipo": "enduro"
+            },
+            {
+                "id": "FZ25",
+                "nombre": "Yamaha FZ-25",
+                "marca": "Yamaha",
+                "cilindraje": "250",
+                "tipo": "calle"
+            },
+            {
+                "id": "XT660R",
+                "nombre": "Yamaha XT660R",
+                "marca": "Yamaha",
+                "cilindraje": "660",
+                "tipo": "enduro"
+            }
+        ],
+        "akt": [
+            {
+                "id": "NKD125",
+                "nombre": "AKT NKD 125",
+                "marca": "AKT",
+                "cilindraje": "125",
+                "tipo": "calle"
+            },
+            {
+                "id": "DINAMIC125R",
+                "nombre": "AKT Dinamic 125 R",
+                "marca": "AKT",
+                "cilindraje": "125",
+                "tipo": "Scooter Automatica"
+            },
+            {
+                "id": "APACHE200",
+                "nombre": "AKT Apache 200",
+                "marca": "AKT",
+                "cilindraje": "200",
+                "tipo": "calle"
+            },
+            {
+                "id": "TTR125",
+                "nombre": "AKT TTR 125",
+                "marca": "AKT",
+                "cilindraje": "125",
+                "tipo": "enduro"
+            },
+            {
+                "id": "CR5",
+                "nombre": "AKT CR5",
+                "marca": "AKT",
+                "cilindraje": "200",
+                "tipo": "calle"
+            }
+        ],
+        "suzuki": [
+            {
+                "id": "GIXXER",
+                "nombre": "Suzuki Gixxer",
+                "marca": "Suzuki",
+                "cilindraje": "150",
+                "tipo": "calle"
+            },
+            {
+                "id": "VIVAR",
+                "nombre": "Suzuki Viva R",
+                "marca": "Suzuki",
+                "cilindraje": "125",
+                "tipo": "Scooter"
+            },
+            {
+                "id": "DR650",
+                "nombre": "Suzuki DR650",
+                "marca": "Suzuki",
+                "cilindraje": "650",
+                "tipo": "enduro"
+            }
+        ]
+    }
+}

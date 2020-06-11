@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import * as motosData from "../../Coordenadas/motos.json";
 
 function Copyright() {
     return (
@@ -50,18 +48,18 @@ const marcas = ["auteco", "suzuki", "yamaha", "akt", "honda"];
 export default function SignIn() {
     const classes = useStyles();
     const history = useHistory();
-
-    useEffect(() => {
-        axios
-            .get("https://motos-json.herokuapp.com/list", {})
-            .then((res) => {
-                //props.handleLista(res.data);
-                sessionStorage.setItem("list", JSON.stringify(res.data))
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    }, []);
+    sessionStorage.setItem("list", JSON.stringify(motosData.default.list))
+    // useEffect(() => {
+    //     axios
+    //         .get("https://motos-json.herokuapp.com/list", {})
+    //         .then((res) => {
+    //             //props.handleLista(res.data);
+    //             sessionStorage.setItem("list", JSON.stringify(res.data))
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // }, []);
 
     return (
         <Container component="main" maxWidth="xs">

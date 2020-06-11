@@ -66,12 +66,6 @@ export default function SignUp() {
         gender: "Otro",
     })
 
-    axios.interceptors.request.use(function (config) {
-        const token = "Bearer " + sessionStorage.getItem("token");
-        config.headers.Authorization = token;
-        return config;
-    });
-
     const handleClick = () => {
         let objeto = {
             name: datos.nombre + datos.apellido,
@@ -85,6 +79,7 @@ export default function SignUp() {
         axios
             .post("https://mbmcolombia.herokuapp.com/register", objeto)
             .then((res) => {
+                sessionStorage.setItem("token", res.data.token);
                 history.push("/marca");
             })
             .catch((err) => {

@@ -61,44 +61,40 @@ export default function SignUp() {
     const moto = JSON.parse(sessionStorage.getItem("moto"));
     const history = useHistory();
     const [datos, setDatos] = useState({
+        cil: moto.cilindraje,
+        ref: moto.id,
+        brand: moto.marca,
         color: "",
-        kilometraje: "",
-        modelo: "",
-        aceite: new Date(),
-        frenoTrasero: new Date(),
-        frenoDelantero: new Date(),
-        filtroAire: new Date(),
-        filtroAceite: new Date(),
-        llantaTrasera: new Date(),
-        llantaDelantera: new Date(),
+        kilom: "",
+        mod: "",
+        oil: new Date(),
+        bbreak: new Date(),
+        fbreak: new Date(),
+        filt: new Date(),
+        buji: new Date(),
+        btire: new Date(),
+        ftire: new Date(),
     })
 
+    // axios.interceptors.request.use(function (config) {
+    //     const tokenTemp = JSON.parse(sessionStorage.getItem("data"))
+    //     const token = "Bearer " + tokenTemp.token;
+    //     config.headers.Authorization = token;
+    //     return config;
+    // });
     axios.interceptors.request.use(function (config) {
-        const tokenTemp = JSON.parse(sessionStorage.getItem("data"))
-        const token = "Bearer " + tokenTemp.token;
+        const token = "Bearer " + sessionStorage.getItem("token");
+        console.log(token);
         config.headers.Authorization = token;
         return config;
     });
 
     const handleClick = () => {
-        console.log(moto)
-        let objeto = {
-            cil: moto.cilindraje,
-            ref: moto.id,
-            mod: datos.modelo,
-            color: datos.color,
-            kilom: datos.kilometraje,
-            oil: datos.aceite,
-            bbreak: datos.frenoTrasero,
-            fbreak: datos.frenoDelantero,
-            filt: datos.filtroAire,
-            buji: datos.filtroAceite,
-            btire: datos.llantaTrasera,
-            ftire: datos.llantaDelantera
-        }
         axios
-            .put("https://mbmcolombia.herokuapp.com/add", objeto)
+            .put("https://mbmcolombia.herokuapp.com/add", datos)
             .then((res) => {
+                console.log(res);
+                sessionStorage.setItem("data", JSON.stringify(res.data));
                 history.push("/dashboard");
             })
             .catch((err) => {
@@ -147,8 +143,8 @@ export default function SignUp() {
                                 label="Kilometraje"
                                 name="kilometraje"
                                 autoComplete="off"
-                                value={datos.kilometraje}
-                                onChange={(e) => setDatos({ ...datos, kilometraje: e.target.value })}
+                                value={datos.kilom}
+                                onChange={(e) => setDatos({ ...datos, kilom: e.target.value })}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -156,12 +152,12 @@ export default function SignUp() {
                                 variant="outlined"
                                 required
                                 fullWidth
-                                name="modelo"
+                                name="mod"
                                 label="Modelo"
                                 id="modelo"
                                 autoComplete="off"
-                                value={datos.modelo}
-                                onChange={(e) => setDatos({ ...datos, modelo: e.target.value })}
+                                value={datos.mod}
+                                onChange={(e) => setDatos({ ...datos, mod: e.target.value })}
                             />
                         </Grid>
                         <Grid item xs={12} >
@@ -170,8 +166,8 @@ export default function SignUp() {
                                     label="Último cambio de aceite"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.aceite}
-                                    onChange={(date) => setDatos({ ...datos, aceite: date })}
+                                    value={datos.oil}
+                                    onChange={(date) => setDatos({ ...datos, oil: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -182,8 +178,8 @@ export default function SignUp() {
                                     label="Último cambio de freno trasero"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.frenoTrasero}
-                                    onChange={(date) => setDatos({ ...datos, frenoTrasero: date })}
+                                    value={datos.bbreak}
+                                    onChange={(date) => setDatos({ ...datos, bbreak: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -194,8 +190,8 @@ export default function SignUp() {
                                     label="Último cambio de freno delantero"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.frenoDelantero}
-                                    onChange={(date) => setDatos({ ...datos, frenoDelantero: date })}
+                                    value={datos.fbreak}
+                                    onChange={(date) => setDatos({ ...datos, fbreak: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -206,8 +202,8 @@ export default function SignUp() {
                                     label="Último cambio de filtro de aire"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.filtroAire}
-                                    onChange={(date) => setDatos({ ...datos, filtroAire: date })}
+                                    value={datos.filt}
+                                    onChange={(date) => setDatos({ ...datos, filt: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -218,8 +214,8 @@ export default function SignUp() {
                                     label="Último cambio de filtro de aceite"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.filtroAceite}
-                                    onChange={(date) => setDatos({ ...datos, filtroAceite: date })}
+                                    value={datos.buji}
+                                    onChange={(date) => setDatos({ ...datos, buji: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -230,8 +226,8 @@ export default function SignUp() {
                                     label="Último cambio de llanta trasera"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.llantaTrasera}
-                                    onChange={(date) => setDatos({ ...datos, llantaTrasera: date })}
+                                    value={datos.btire}
+                                    onChange={(date) => setDatos({ ...datos, btire: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -242,8 +238,8 @@ export default function SignUp() {
                                     label="Último cambio de llanta trasera"
                                     inputVariant="outlined"
                                     fullWidth
-                                    value={datos.llantaDelantera}
-                                    onChange={(date) => setDatos({ ...datos, llantaDelantera: date })}
+                                    value={datos.ftire}
+                                    onChange={(date) => setDatos({ ...datos, ftire: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>

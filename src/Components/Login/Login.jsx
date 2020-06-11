@@ -65,6 +65,7 @@ export default function SignIn() {
             .post("https://mbmcolombia.herokuapp.com/login", login)
             .then((res) => {
                 sessionStorage.setItem("data", JSON.stringify(res.data));
+                sessionStorage.setItem("token", res.data.token);
                 history.push("/dashboard");
                 console.log(res);
             })

@@ -179,7 +179,11 @@ const useStyles = makeStyles((theme) => ({
     },
     textoPopup: {
         color: "#000",
-    }
+    },
+    buttonAgregar: {
+        textAlign: "center",
+        marginTop: "5%",
+    },
 }));
 
 function datediff(first, second) {
@@ -375,6 +379,14 @@ export default function InicioS() {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
+                <div className={classes.buttonAgregar}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => history.push("/marca")}
+                    >Agregar motocicleta</Button>
+                </div>
+
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid style={{ justifyContent: "center" }} container spacing={3}>
 
