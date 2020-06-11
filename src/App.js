@@ -1,25 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Login from "./Components/Login/Login";
+import Registro from "./Components/Registro/Registro";
+import Marca from "./Components/Marca/Marca";
+import MotoRegistro from "./Components/MotoRegistro/MotoRegistro";
+import Dashboard from "./Components/Dashboard/Dashboard";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
+  // const handleLogin = () =>{
+  //   sessionStorage.setItem("auth", "true");
+  // }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route
+        exact
+        path="/"
+        component={Login}
+      />
+      <Route
+        exact
+        path="/registro"
+        component={Registro}
+      />
+      <Route
+        exact
+        path="/marca"
+        component={Marca}
+      />
+      <Route
+        exact
+        path="/motoregistro"
+        component={MotoRegistro}
+      />
+      <Route
+        exact
+        path="/dashboard"
+        component={Dashboard}
+      />
+    </Router>
   );
 }
 
