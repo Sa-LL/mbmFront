@@ -81,7 +81,10 @@ export default function SignUp() {
             .then((res) => {
                 sessionStorage.setItem("token", res.data.token);
                 console.log(res)
-                sessionStorage.setItem("data", JSON.stringify(res.data));
+                sessionStorage.setItem("nombre", res.data.name);
+                sessionStorage.setItem("email", res.data.email);
+                sessionStorage.setItem("country", res.data.country);
+                sessionStorage.setItem("gender", res.data.gender);
                 history.push("/marca");
             })
             .catch((err) => {

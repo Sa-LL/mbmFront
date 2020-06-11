@@ -237,6 +237,7 @@ export default function InicioS() {
     const [tallerSeleccionado, setTallerSeleccionado] = useState(null);
     const [open, setOpen] = useState(false);
     let data = JSON.parse(sessionStorage.getItem("data"));
+    let perfil = sessionStorage.getItem("perfil");
 
     const [motoActual, setMotoActual] = useState(data.bikes[0]);
 
@@ -551,19 +552,19 @@ export default function InicioS() {
                                                 <List className={classes.paperList}>
                                                     <Divider component="li" />
                                                     <ListItem>
-                                                        <ListItemText primary="Nombre" secondary={data.name} />
+                                                        <ListItemText primary="Nombre" secondary={sessionStorage.getItem("nombre")} />
                                                     </ListItem>
                                                     <Divider component="li" />
                                                     <ListItem>
-                                                        <ListItemText primary="Correo electrónico" secondary={data.email} />
+                                                        <ListItemText primary="Correo electrónico" secondary={sessionStorage.getItem("email")} />
                                                     </ListItem>
                                                     <Divider component="li" />
                                                     <ListItem>
-                                                        <ListItemText primary="País" secondary={data.country} />
+                                                        <ListItemText primary="País" secondary={sessionStorage.getItem("country")} />
                                                     </ListItem>
                                                     <Divider component="li" />
                                                     <ListItem>
-                                                        <ListItemText primary="Género" secondary={data.gender} />
+                                                        <ListItemText primary="Género" secondary={sessionStorage.getItem("gender")} />
                                                     </ListItem>
                                                 </List>
                                             </Paper>
