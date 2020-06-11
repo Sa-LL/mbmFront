@@ -68,7 +68,7 @@ export default function SignUp() {
 
     const handleClick = () => {
         let objeto = {
-            name: datos.nombre + datos.apellido,
+            name: datos.nombre + " " + datos.apellido,
             email: datos.email,
             password: datos.password,
             phone: datos.phone,
