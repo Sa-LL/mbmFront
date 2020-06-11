@@ -124,7 +124,7 @@ export default function SignIn() {
           </Button>
                     <Grid container>
                         <Grid item>
-                            <Link href="/registro" variant="body2">
+                            <Link onClick={() => history.push("/registro")} variant="body2">
                                 {"¿No tienes una cuenta? Regístrate"}
                             </Link>
                         </Grid>
