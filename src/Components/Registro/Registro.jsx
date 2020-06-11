@@ -84,7 +84,7 @@ export default function SignUp() {
             gender: datos.gender
         }
         axios
-            .post("https://localhost:5000/register", objeto)
+            .post("https://mbmcolombia.herokuapp.com/register", objeto)
             .then((res) => {
                 history.push("/marca");
             })
