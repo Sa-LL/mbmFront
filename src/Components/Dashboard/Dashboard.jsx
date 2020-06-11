@@ -579,7 +579,7 @@ export default function InicioS() {
                                                                         <CardMedia
                                                                             component="img"
                                                                             alt={repuesto.nombre}
-                                                                            height="186px"
+                                                                            height="300px"
                                                                             image={require(`../../Imagenes/Repuestos/${repuesto.id}.png`)}
                                                                             title={repuesto.nombre}
                                                                         />
