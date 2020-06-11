@@ -2,6 +2,7 @@ import React from 'react';
 import Login from "./Components/Login/Login";
 import Registro from "./Components/Registro/Registro";
 import Marca from "./Components/Marca/Marca";
+import Motos from "./Components/Motos/Motos";
 import MotoRegistro from "./Components/MotoRegistro/MotoRegistro";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -26,6 +27,11 @@ function App() {
         exact
         path="/marca"
         component={Marca}
+      />
+      <Route
+        exact
+        path="/motos"
+        component={Motos}
       />
       <Route
         exact

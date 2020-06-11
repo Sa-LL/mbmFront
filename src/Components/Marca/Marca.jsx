@@ -9,6 +9,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function Copyright() {
@@ -48,9 +49,10 @@ const marcas = ["auteco", "suzuki", "yamaha", "akt", "honda"];
 
 export default function SignIn() {
     const classes = useStyles();
+    const history = useHistory();
 
     return (
-        <Container component="main" maxWidth="sm">
+        <Container component="main" maxWidth="xs">
             <CssBaseline />
             <div className={classes.paper}>
                 <img
@@ -63,10 +65,13 @@ export default function SignIn() {
                     Seleccionar marca
         </Typography>
                 <Grid style={{ justifyContent: "center" }} container spacing={2}>
-                    {marcas.map((key, index) => (
+                    {marcas.map((key) => (
                         <img
-                            key={index}
-                            onClick={() => console.log("click")}
+                            key={key}
+                            onClick={() => {
+                                sessionStorage.setItem("marca", key);
+                                history.push("/motoregistro")
+                            }}
                             style={{ margin: "5%" }}
                             src={require(`../../Imagenes/${key}.png`)}
                             alt="mbmlogo"

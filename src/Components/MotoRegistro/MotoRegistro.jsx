@@ -22,6 +22,7 @@ import {
     DatePicker,
 } from '@material-ui/pickers';
 import DateRangeIcon from "@material-ui/icons/DateRange";
+import { useHistory } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -57,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
-
+    const history = useHistory();
     const [datos, setDatos] = useState({
         color: "",
         kilometraje: "",
@@ -72,19 +73,20 @@ export default function SignUp() {
     })
 
     axios.interceptors.request.use(function (config) {
-        const token = "Bearer " + sessionStorage.getItem("token");
+        const tokenTemp = JSON.parse(sessionStorage.getItem("data"))
+        const token = "Bearer " + tokenTemp.token;
         config.headers.Authorization = token;
         return config;
     });
 
     const handleClick = () => {
         axios
-            .post("link", datos)
+            .post("https://mbmcolombia.herokuapp.com/add", datos)
             .then((res) => {
-                sessionStorage.setItem("token", res.data.token);
+                history.push("/dashboard");
             })
             .catch((err) => {
-                console.log(err)
+                history.push("/dashboard");
             });
     };
 

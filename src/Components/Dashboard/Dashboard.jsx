@@ -32,6 +32,8 @@ import Container from "@material-ui/core/Container";
 import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
+import Paper from "@material-ui/core/Paper";
+import ReactMapGL, { Marker } from "react-map-gl";
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -135,6 +137,19 @@ const useStyles = makeStyles((theme) => ({
     bikeCard: {
         maxWidth: 300,
     },
+    paperCard: {
+        margin: "5%",
+        display: "flex",
+        flexWrap: "wrap"
+    },
+    paperMap: {
+        padding: theme.spacing(2),
+        display: "flex",
+        marginTop: "5%",
+        height: "70vh",
+        position: "relative",
+        width: "70vw",
+    },
 }));
 
 function datediff(first, second) {
@@ -176,9 +191,16 @@ CircularProgressWithLabel.propTypes = {
 };
 
 export default function InicioS() {
+
+    const [viewport, SetViewport] = useState({
+        latitude: 4.813415,
+        longitude: -75.699704,
+        zoom: 13,
+    });
+
     const history = useHistory();
     const classes = useStyles();
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
 
     const [motoActual, setMotoActual] = useState({});
 
@@ -318,11 +340,12 @@ export default function InicioS() {
                 <div className={classes.appBarSpacer} />
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid style={{ justifyContent: "center" }} container spacing={3}>
+
                         {
                             menuItems.misMotos ?
                                 data.bikes.map((moto, index) => {
 
-                                    return (<Grid key={index} item xs={6}>
+                                    return (<Paper className={classes.paperCard} key={index}>
                                         <Card className={classes.bikeCard}>
                                             <CardActionArea onClick={() => {
                                                 setMotoActual(moto)
@@ -351,7 +374,7 @@ export default function InicioS() {
                                                 </Button>
                                             </CardActions>
                                         </Card>
-                                    </Grid>)
+                                    </Paper>)
                                 }
                                 )
                                 :
@@ -395,9 +418,26 @@ export default function InicioS() {
 
                                         </Grid>
                                     )
-                                    : null
-                        }
+                                    :
+                                    menuItems.miTaller ?
+                                        <Paper
+                                            className={classes.paperMap}
+                                        >
+                                            <ReactMapGL
+                                                {...viewport}
+                                                width="100%"
+                                                height="100%"
+                                                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                                                onViewStateChange={viewport => {
+                                                    SetViewport(viewport);
+                                                }}
+                                                mapStyle="mapbox://styles/mapbox/streets-v11"
+                                            ></ReactMapGL>
+                                        </Paper>
 
+
+                                        : null
+                        }
                     </Grid>
                 </Container>
             </main>
