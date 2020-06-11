@@ -97,7 +97,7 @@ export default function SignUp() {
             ftire: datos.llantaDelantera
         }
         axios
-            .post("https://mbmcolombia.herokuapp.com/add", objeto)
+            .put("https://mbmcolombia.herokuapp.com/add", objeto)
             .then((res) => {
                 history.push("/dashboard");
             })
@@ -171,7 +171,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.aceite}
-                                    onChange={(e) => setDatos({ ...datos, aceite: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, aceite: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -183,7 +183,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.frenoTrasero}
-                                    onChange={(e) => setDatos({ ...datos, frenoTrasero: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, frenoTrasero: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -195,7 +195,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.frenoDelantero}
-                                    onChange={(e) => setDatos({ ...datos, frenoDelantero: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, frenoDelantero: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -207,7 +207,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.filtroAire}
-                                    onChange={(e) => setDatos({ ...datos, filtroAire: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, filtroAire: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -219,7 +219,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.filtroAceite}
-                                    onChange={(e) => setDatos({ ...datos, filtroAceite: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, filtroAceite: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -231,7 +231,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.llantaTrasera}
-                                    onChange={(e) => setDatos({ ...datos, llantaTrasera: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, llantaTrasera: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>
@@ -243,7 +243,7 @@ export default function SignUp() {
                                     inputVariant="outlined"
                                     fullWidth
                                     value={datos.llantaDelantera}
-                                    onChange={(e) => setDatos({ ...datos, llantaDelantera: e.target.value })}
+                                    onChange={(date) => setDatos({ ...datos, llantaDelantera: date })}
                                     format="dd/MM/yyyy"
                                 />
                             </MuiPickersUtilsProvider>

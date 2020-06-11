@@ -79,6 +79,7 @@ export default function SignUp() {
             password: datos.password,
             phone: datos.phone,
             country: datos.country,
+            city: datos.city,
             gender: datos.gender
         }
         axios

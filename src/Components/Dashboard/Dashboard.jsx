@@ -33,7 +33,10 @@ import PropTypes from 'prop-types';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Box from '@material-ui/core/Box';
 import Paper from "@material-ui/core/Paper";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import * as tallerData from "../../Coordenadas/talleres.json";
+import RoomIcon from '@material-ui/icons/Room';
+
 // function Copyright() {
 //   return (
 //     <Typography variant="body2" color="textSecondary" align="center">
@@ -150,6 +153,33 @@ const useStyles = makeStyles((theme) => ({
         position: "relative",
         width: "70vw",
     },
+    frenoDelantero: {
+        color: "#5aa8fc",
+    },
+    frenoTrasero: {
+        color: "#4bd6cb",
+    },
+    filtroAceite: {
+        color: "#ffd73e",
+    },
+    filtroAire: {
+        color: "#ff8135",
+    },
+    llantaTrasera: {
+        color: "#a9ad14",
+    },
+    paperList: {
+        width: "60vw",
+        maxWidth: 360,
+    },
+    largeIcon: {
+        '& svg': {
+            fontSize: 30
+        }
+    },
+    textoPopup: {
+        color: "#000",
+    }
 }));
 
 function datediff(first, second) {
@@ -200,6 +230,7 @@ export default function InicioS() {
 
     const history = useHistory();
     const classes = useStyles();
+    const [tallerSeleccionado, setTallerSeleccionado] = useState(null);
     const [open, setOpen] = useState(false);
     let data = JSON.parse(sessionStorage.getItem("data"));
 
@@ -386,50 +417,81 @@ export default function InicioS() {
                                 :
 
                                 menuItems.misEstadisticas ?
-                                    (
-                                        <Grid item xs={8}>
-                                            {console.log(motoActual)}
-                                            <List>
-                                                <Divider component="li" />
-                                                <ListItem>
-                                                    <ListItemText primary="Freno trasero" />
-                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.bbreak.$date), new Date()) * 10 * dataPorcentaje.frenos} />
-                                                </ListItem>
-                                                <Divider component="li" />
-                                                <ListItem>
-                                                    <ListItemText primary="Freno delantero" />
-                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.fbreak.$date), new Date()) * 10 * dataPorcentaje.frenos} />
-                                                </ListItem>
-                                                <Divider component="li" />
-                                                <ListItem>
-                                                    <ListItemText primary="Filtro de aceite" />
-                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.buji.$date), new Date()) * 10 * dataPorcentaje.filtroAceite} />
-                                                </ListItem>
-                                                <Divider component="li" />
-                                                <ListItem>
-                                                    <ListItemText primary="Filtro de aire" />
-                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.filt.$date), new Date()) * 10 * dataPorcentaje.filtroAire} />
-                                                </ListItem>
-                                                <Divider component="li" />
-                                                <ListItem>
-                                                    <ListItemText primary="Llanta trasera" />
-                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.btire.$date), new Date()) * 10 * dataPorcentaje.llantas} />
-                                                </ListItem>
-                                                <Divider component="li" />
-                                                <ListItem>
-                                                    <ListItemText primary="Llanta delantera" />
-                                                    <CircularProgressWithLabel value={datediff(new Date(motoActual.ftire.$date), new Date()) * 10 * dataPorcentaje.llantas} />
-                                                </ListItem>
-                                            </List>
+                                    (motoActual &&
+                                        <Grid>
+                                            <Paper className={classes.paperCard}>
+                                                <Card>
+                                                    <CardActionArea>
+                                                        <CardMedia
+                                                            component="img"
+                                                            alt={motoActual.ref}
+                                                            height="186px"
+                                                            image={require(`../../Imagenes/Motos/${motoActual.ref}.png`)}
+                                                            title={motoActual.brand + motoActual.ref}
+                                                        />
+                                                        <CardContent>
+                                                            <Typography gutterBottom variant="h5" component="h2">
+                                                                {`${motoActual.brand} ${motoActual.ref} color ${motoActual.color}`}
+                                                            </Typography>
+
+                                                        </CardContent>
+                                                    </CardActionArea>
+                                                </Card>
+                                            </Paper>
+                                            <Paper>
+                                                <List className={classes.paperList}>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Freno trasero" />
+                                                        <CircularProgressWithLabel size={80}
+                                                            className={classes.frenoTrasero}
+                                                            value={datediff(new Date(motoActual.bbreak.$date), new Date()) * 10 * dataPorcentaje.frenos} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Freno delantero" />
+                                                        <CircularProgressWithLabel size={80}
+                                                            className={classes.frenoDelantero}
+                                                            value={datediff(new Date(motoActual.fbreak.$date), new Date()) * 10 * dataPorcentaje.frenos} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Filtro de aceite" />
+                                                        <CircularProgressWithLabel size={80}
+                                                            className={classes.filtroAceite}
+                                                            value={datediff(new Date(motoActual.buji.$date), new Date()) * 10 * dataPorcentaje.filtroAceite} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Filtro de aire" />
+                                                        <CircularProgressWithLabel size={80}
+                                                            className={classes.filtroAire}
+                                                            value={datediff(new Date(motoActual.filt.$date), new Date()) * 10 * dataPorcentaje.filtroAire} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Llanta trasera" />
+                                                        <CircularProgressWithLabel size={80}
+                                                            className={classes.llantaTrasera}
+                                                            value={datediff(new Date(motoActual.btire.$date), new Date()) * 10 * dataPorcentaje.llantas} />
+                                                    </ListItem>
+                                                    <Divider component="li" />
+                                                    <ListItem>
+                                                        <ListItemText primary="Llanta delantera" />
+                                                        <CircularProgressWithLabel size={80}
+                                                            value={datediff(new Date(motoActual.ftire.$date), new Date()) * 10 * dataPorcentaje.llantas} />
+                                                    </ListItem>
+                                                </List>
 
 
-                                        </Grid>
+                                            </Paper></Grid>
                                     )
                                     :
                                     menuItems.miTaller ?
                                         <Paper
                                             className={classes.paperMap}
                                         >
+
                                             <ReactMapGL
                                                 {...viewport}
                                                 width="100%"
@@ -439,7 +501,34 @@ export default function InicioS() {
                                                     SetViewport(viewport);
                                                 }}
                                                 mapStyle="mapbox://styles/mapbox/streets-v11"
-                                            ></ReactMapGL>
+                                            >
+                                                {tallerData.default[motoActual.brand].map((taller, index) => (
+                                                    <Marker key={index}
+                                                        longitude={taller[0]}
+                                                        latitude={taller[1]}
+                                                        offsetLeft={-41}
+                                                        offsetTop={-65}
+                                                    >
+                                                        <IconButton
+                                                            onClick={e => {
+                                                                setTallerSeleccionado(taller)
+                                                            }}
+                                                            className={classes.largeIcon}
+                                                        >
+                                                            <RoomIcon color="primary" />
+                                                        </IconButton>
+                                                    </Marker>
+                                                ))}
+                                                {tallerSeleccionado &&
+                                                    <Popup longitude={tallerSeleccionado[0]}
+                                                        latitude={tallerSeleccionado[1]}
+                                                        onClose={() => setTallerSeleccionado(null)}
+
+                                                    >
+                                                        <h2 className={classes.textoPopup}>{motoActual.brand}</h2>
+                                                    </Popup>
+                                                }
+                                            </ReactMapGL>
                                         </Paper>
 
 
